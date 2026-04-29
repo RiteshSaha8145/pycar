@@ -42,16 +42,17 @@ pip install -e pycar
 
 ### Converting Folders to CARv1 Files
 ```python
-from pycar import CARv1Writer, folder_to_dag
+from pycar.car.compressed_archive import CARv1Writer
+from pycar.car.utils import folder_to_dag
 
 with CARv1Writer(file=None, name="example.car") as car_writer:
-    cid = folder_to_dag(car_writer, "/path/to/folder", chunk_size=262144)
+    cid = folder_to_dag(car_writer, "./path/to/folder", chunk_size=262144)
     print("CARv1 CID:", cid)
 ```
 
 ### Converting Files to CARv1 Files
 ```python
-from pycar.car import CARv1Writer
+from pycar.car.compressed_archive import CARv1Writer
 from pycar.file_types import BinaryFile
 
 with open("dummy_file_path", "rb") as f:
